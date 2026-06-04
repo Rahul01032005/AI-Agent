@@ -2,7 +2,7 @@ livekit==0.18.3
 livekit-agents==0.8.12
 livekit-plugins-openai==0.7.1
 livekit-plugins-silero==0.6.4
-livekit-plugins-google==0.6.0
+livekit-plugins-google==0.7.1
 python-dotenv
 psutil
 pyautogui
