@@ -1,5 +1,18 @@
 import asyncio
 import logging
+import os
+import sys
+from pathlib import Path
+
+# Add venv DLL directories to search path for Windows compatibility
+if os.name == "nt":
+    venv_path = Path(__file__).resolve().parent / "venv"
+    if venv_path.exists():
+        os.add_dll_directory(str(venv_path))
+        os.add_dll_directory(str(venv_path / "Scripts"))
+
+# Add parent directory to sys.path to allow absolute imports under agent package
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 import requests
 import pathlib
 from livekit.agents import JobContext, JobRequest, WorkerOptions, worker, llm
