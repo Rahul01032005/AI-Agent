@@ -15,7 +15,7 @@ if os.name == "nt":
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 import requests
 import pathlib
-from livekit.agents import JobContext, JobRequest, WorkerOptions, worker, llm
+from livekit.agents import JobContext, JobRequest, WorkerOptions, cli, llm
 from livekit.agents.voice_assistant import VoiceAssistant
 from livekit.plugins import google, openai, silero
 
@@ -186,4 +186,4 @@ async def entrypoint(ctx: JobContext):
 
 if __name__ == "__main__":
     # Start LiveKit Agent worker
-    worker.run_app(WorkerOptions(entrypoint_fnc=entrypoint))
+    cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint))
