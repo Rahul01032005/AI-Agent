@@ -169,4 +169,7 @@ Ensure your microphone permission is granted in the web browser, and the `OPENAI
 ---
 
 ## UI Screenshots
-*(Screenshots placeholder section)*
+<img width="1919" height="942" alt="image" src="https://github.com/user-attachments/assets/8bf787e1-7769-4afc-8947-df1fb43f337f" />
+<img width="1919" height="943" alt="image" src="https://github.com/user-attachments/assets/4df75789-9a6c-441c-bf99-563e8d2892d9" />
+
+
