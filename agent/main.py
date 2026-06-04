@@ -3,8 +3,8 @@ import logging
 import requests
 import pathlib
 from livekit.agents import JobContext, JobRequest, WorkerOptions, worker, llm
-from livekit.agents.voice_pipeline import VoicePipelineAgent
-from livekit.plugins import gemini, openai, silero
+from livekit.agents.voice_assistant import VoiceAssistant
+from livekit.plugins import google, openai, silero
 
 from agent.config import config
 from agent.tools import safety
@@ -117,13 +117,13 @@ async def entrypoint(ctx: JobContext):
         llm_model = openai.LLM()
     else:
         logger.info("Using Gemini LLM provider.")
-        llm_model = gemini.LLM(model=config.GEMINI_MODEL)
+        llm_model = google.LLM(model=config.GEMINI_MODEL)
         
     # Function calling context
     fnc_ctx = AstraMindFunctionContext()
     
     # Define VAD, STT, LLM, TTS
-    agent = VoicePipelineAgent(
+    agent = VoiceAssistant(
         vad=silero.VAD.load(),
         stt=openai.STT(),
         llm=llm_model,
@@ -166,7 +166,7 @@ async def entrypoint(ctx: JobContext):
         )
         
     agent.start(ctx.room)
-    logger.info("VoicePipelineAgent started.")
+    logger.info("VoiceAssistant started.")
     
     # Startup greeting
     await agent.say("Hello Rahul, AstraMind is online. How can I assist you with your laptop today?")
